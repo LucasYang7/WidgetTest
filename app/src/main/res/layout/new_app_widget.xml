@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:theme="@style/Theme.WidgetTest.AppWidgetContainer">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/ic_launcher" />
+
     <TextView
         android:id="@+id/appwidget_text"
         style="@style/Widget.WidgetTest.AppWidget.InnerView"
@@ -14,11 +19,6 @@
         android:layout_margin="8dp"
         android:contentDescription="@string/appwidget_text"
         android:text="@string/appwidget_text"
-        android:textSize="24sp"
+        android:textSize="8sp"
         android:textStyle="bold|italic" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@mipmap/ic_launcher"/>
 </RelativeLayout>
