@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WidgetTest">
         <receiver
+            android:name=".PinnedAppWidgetReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+        <receiver
             android:name=".NewAppWidget"
             android:exported="true">
             <intent-filter>
