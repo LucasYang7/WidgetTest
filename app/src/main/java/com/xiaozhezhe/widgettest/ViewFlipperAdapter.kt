@@ -8,7 +8,10 @@ import android.widget.BaseAdapter
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 
 
 class ViewFlipperAdapter : BaseAdapter {
@@ -43,6 +46,7 @@ class ViewFlipperAdapter : BaseAdapter {
         mContext?.let {
             Glide.with(it)
                 .load(imageList?.get(position))
+                .transform(CenterCrop(), RoundedCorners(40))
                 .into(imageView!!)
         }
         return view

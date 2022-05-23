@@ -3,10 +3,12 @@ package com.xiaozhezhe.widgettest
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
-import com.xiaozhezhe.widgettest.NewAppWidget
 import android.widget.RemoteViews
-import com.xiaozhezhe.widgettest.R
 import java.text.SimpleDateFormat
+
+import android.content.Intent
+import android.net.Uri
+
 
 /**
  * Implementation of App Widget functionality.
@@ -41,7 +43,12 @@ class NewAppWidget : AppWidgetProvider() {
 
             // Construct the RemoteViews object
             val views = RemoteViews(context.packageName, R.layout.new_app_widget)
-            views.setTextViewText(R.id.appwidget_text, timeNow)
+//            views.setTextViewText(R.id.appwidget_text, timeNow)
+
+            val serviceIntent = Intent(context, WidgetService::class.java)
+            serviceIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            serviceIntent.setData(Uri.parse(serviceIntent.toUri(Intent.URI_INTENT_SCHEME)))
+            views.setRemoteAdapter(R.id.widgetAdapterViewFlipper, serviceIntent)
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
